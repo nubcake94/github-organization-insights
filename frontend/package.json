@@ -3,7 +3,6 @@
 	"version": "0.1.0",
 	"private": true,
 	"homepage": "/",
-	"proxy": "http://localhost:5000",
 	"dependencies": {
 		"react": "^17.0.2",
 		"react-app-polyfill": "^2.0.0",
