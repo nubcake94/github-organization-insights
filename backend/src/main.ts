@@ -2,7 +2,7 @@ import { Logger } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 
-const PORT = 3000;
+const PORT = 5000;
 
 async function bootstrap() {
 	const logger = process.env.NODE_ENV === 'production' ? console : new Logger('bootstrap');
