@@ -17,6 +17,7 @@
     "lint": "yarn wsrun lint",
     "lint-fix": "yarn wsrun lint-fix",
     "test": "yarn wsrun test",
-    "build": "yarn wsrun build"
+    "build": "yarn wsrun build",
+    "heroku-postbuild": "(cd frontend && yarn build); (cd backend && yarn build)"
   }
 }
