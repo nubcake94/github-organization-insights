@@ -1,22 +1,22 @@
 {
-    "name": "github-organization-insights",
-    "private": true,
-    "workspaces": [
-        "backend",
-        "frontend"
-    ],
-    "engines": {
-        "node": "14.18.1",
-        "yarn": "1.22.15"
-    },
-    "devDependencies": {
-        "wsrun": "^5.2.4"
-    },
-    "scripts": {
-        "dev": "yarn wsrun dev",
-        "lint": "yarn wsrun lint",
-        "lint-fix": "yarn wsrun lint-fix",
-        "test": "yarn wsrun test",
-        "build": "yarn wsrun build"
-    }
+  "name": "github-organization-insights",
+  "private": true,
+  "workspaces": [
+    "backend",
+    "frontend"
+  ],
+  "engines": {
+    "node": "14.18.1",
+    "yarn": "1.22.15"
+  },
+  "devDependencies": {
+    "wsrun": "^5.2.4"
+  },
+  "scripts": {
+    "dev": "yarn wsrun dev",
+    "lint": "yarn wsrun lint",
+    "lint-fix": "yarn wsrun lint-fix",
+    "test": "yarn wsrun test",
+    "build": "yarn wsrun build"
+  }
 }
