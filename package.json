@@ -13,6 +13,7 @@
     "wsrun": "^5.2.4"
   },
   "scripts": {
+    "start": "yarn wsrun start",
     "dev": "yarn wsrun dev",
     "lint": "yarn wsrun lint",
     "lint-fix": "yarn wsrun lint-fix",
