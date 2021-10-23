@@ -1,0 +1,9 @@
+/node_modules
+
+.yarn
+.DS_Store
+.env
+.yarnrc
+debug.log
+yarn-error.log
+
