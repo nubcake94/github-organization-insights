@@ -1,5 +1,13 @@
-import logo from './logo.svg';
+import { persistor, store } from 'app/store/store';
+import { createBrowserHistory } from 'history';
+import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
 import './App.css';
+import logo from './logo.svg';
+
+export const history = createBrowserHistory({
+	basename: process.env.PUBLIC_URL,
+});
 
 function App() {
 	return (
@@ -19,6 +27,16 @@ function App() {
 				</a>
 			</header>
 		</div>
+	);
+}
+
+function RootApp() {
+	return (
+		<Provider store={store}>
+			<PersistGate loading={null} persistor={persistor} onBeforeLift={() => {}}>
+				<App />
+			</PersistGate>
+		</Provider>
 	);
 }
 
