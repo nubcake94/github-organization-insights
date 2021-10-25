@@ -6,6 +6,7 @@
 	"proxy": "localhost:5000",
 	"dependencies": {
 		"@reduxjs/toolkit": "^1.6.2",
+		"axios": "^0.24.0",
 		"history": "^5.0.1",
 		"react": "^17.0.2",
 		"react-app-polyfill": "^2.0.0",
