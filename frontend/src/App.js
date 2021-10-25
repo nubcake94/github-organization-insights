@@ -40,4 +40,4 @@ function RootApp() {
 	);
 }
 
-export default App;
+export default RootApp;
