@@ -9,3 +9,35 @@ body {
 code {
 	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
+
+@font-face {
+	font-family: 'Comfortaa';
+	src: local('Comfortaa Bold'), local('Comfortaa-Bold'),
+		url('./assets/fonts/Comfortaa-Bold.ttf') format('truetype');
+	font-weight: 700;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Comfortaa';
+	src: local('Comfortaa Semi Bold'), local('Comfortaa-SemiBold'),
+		url('./assets/fonts/Comfortaa-SemiBold.ttf') format('truetype');
+	font-weight: 600;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Comfortaa';
+	src: local('Comfortaa Regular'), local('Comfortaa-Regular'),
+		url('./assets/fonts/Comfortaa-Regular.ttf') format('truetype');
+	font-weight: 500;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Comfortaa';
+	src: local('Comfortaa Light'), local('Comfortaa-Light'),
+		url('./assets/fonts/Comfortaa-Light.ttf') format('truetype');
+	font-weight: 300;
+	font-style: normal;
+}
