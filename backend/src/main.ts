@@ -8,6 +8,8 @@ async function bootstrap() {
 	const logger = process.env.NODE_ENV === 'production' ? console : new Logger('bootstrap');
 	const app = await NestFactory.create(AppModule);
 
+	app.setGlobalPrefix('api');
+
 	await app.listen(PORT);
 	logger.log(`Application is listening on port ${PORT}`);
 }
