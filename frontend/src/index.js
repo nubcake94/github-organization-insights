@@ -1,9 +1,9 @@
 import React from 'react';
+import 'react-app-polyfill/stable';
 import ReactDOM from 'react-dom';
 import App from './App';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import 'react-app-polyfill/stable';
 
 ReactDOM.render(
 	<React.StrictMode>

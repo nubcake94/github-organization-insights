@@ -1,12 +1,20 @@
 export default {
 	primary: {
-		main: 'red',
+		main: '#FF0000',
 	},
 	secondary: {
-		main: 'blue',
+		main: '#0000FF',
 	},
-	error: {},
-	text: {},
-	background: {},
-	divider: {},
+	error: {
+		main: '#0000FF',
+	},
+	text: {
+		main: '#0000FF',
+	},
+	background: {
+		main: '#0000FF',
+	},
+	divider: {
+		main: '#0000FF',
+	},
 };

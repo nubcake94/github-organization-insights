@@ -5,7 +5,7 @@ import theme from 'app/theme';
 import { createBrowserHistory } from 'history';
 import { Provider } from 'react-redux';
 import { renderRoutes } from 'react-router-config';
-import { BrowserRouter } from 'react-router-dom';
+import { Router } from 'react-router-dom';
 import { PersistGate } from 'redux-persist/integration/react';
 
 export const history = createBrowserHistory({
@@ -14,9 +14,9 @@ export const history = createBrowserHistory({
 
 function App() {
 	return (
-		<BrowserRouter history={history} basename={process.env.PUBLIC_URL}>
+		<Router history={history} basename={process.env.PUBLIC_URL}>
 			{renderRoutes(routes)}
-		</BrowserRouter>
+		</Router>
 	);
 }
 
