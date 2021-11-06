@@ -7,7 +7,7 @@ const errorRoutes = {
 	component: ErrorLayout,
 	routes: [
 		{
-			path: '/error/error-404',
+			path: '/errors/error-404',
 			exact: true,
 			component: lazy(() => import('app/pages/error-404')),
 		},
