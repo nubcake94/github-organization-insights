@@ -5,6 +5,7 @@
 	"homepage": "/",
 	"proxy": "localhost:5000",
 	"dependencies": {
+		"@material-ui/core": "^4.12.3",
 		"@reduxjs/toolkit": "^1.6.2",
 		"axios": "^0.24.0",
 		"history": "^5.0.1",
