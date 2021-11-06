@@ -2,14 +2,19 @@ import { SimpleLayout } from 'app/layouts';
 import { lazy } from 'react';
 import { Redirect } from 'react-router-dom';
 
-const errorRoutes = {
-	path: '/errors',
+const landingRoutes = {
+	path: '/',
 	component: SimpleLayout,
 	routes: [
 		{
-			path: '/errors/error-404',
+			path: '/',
 			exact: true,
-			component: lazy(() => import('app/pages/error-404')),
+			component: lazy(() => import('features/landing/Landing')),
+		},
+		{
+			path: '/login',
+			exact: true,
+			component: lazy(() => import('features/login/Login')),
 		},
 		{
 			component: () => <Redirect to="/errors/error-404" />,
@@ -17,4 +22,4 @@ const errorRoutes = {
 	],
 };
 
-export default errorRoutes;
+export default landingRoutes;
