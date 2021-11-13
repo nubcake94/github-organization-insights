@@ -1,7 +1,7 @@
 import { ThemeProvider } from '@material-ui/core';
 import routes from 'app/routes';
 import { persistor, store } from 'app/store/store';
-import theme from 'app/theme';
+import GHInsightsTheme from 'app/theme';
 import { createBrowserHistory } from 'history';
 import { Provider } from 'react-redux';
 import { renderRoutes } from 'react-router-config';
@@ -24,7 +24,7 @@ function RootApp() {
 	return (
 		<Provider store={store}>
 			<PersistGate loading={null} persistor={persistor} onBeforeLift={() => {}}>
-				<ThemeProvider theme={theme}>
+				<ThemeProvider theme={GHInsightsTheme}>
 					<App />
 				</ThemeProvider>
 			</PersistGate>

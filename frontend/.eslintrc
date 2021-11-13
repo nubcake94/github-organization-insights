@@ -13,6 +13,8 @@
 		"react/jsx-props-no-spreading": "warn",
 		"react/react-in-jsx-scope": "off",
 		"react/forbid-prop-types": "off",
+		"react/require-default-props": "off",
+		"react/destructuring-assignment": "off",
 
 		"jsx-a11y/anchor-is-valid": "off",
 		"jsx-a11y/label-has-associated-control": "off",

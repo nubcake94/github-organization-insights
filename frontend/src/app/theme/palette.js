@@ -9,10 +9,14 @@ export default {
 		main: '#0000FF',
 	},
 	text: {
-		main: '#0000FF',
+		primary: '#c9d1d9',
+		subtitle1: '#8b949e',
 	},
 	background: {
-		main: '#0000FF',
+		field: '#010409',
+		default: '#0d1117',
+		paper: '#0D1117',
+		paperLighter: '#161b22',
 	},
 	divider: {
 		main: '#0000FF',
