@@ -1,8 +1,21 @@
 import { Box, makeStyles, Typography } from '@material-ui/core';
 import { GitHubButton, Page } from 'app/components';
+import { selectToken } from 'app/store/slices/auth.slice';
+import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router';
 
 const Login = () => {
 	const classes = useStyles();
+
+	const token = useSelector(selectToken);
+	const history = useHistory();
+
+	useEffect(() => {
+		if (token) {
+			history.push('/user/dashboard');
+		}
+	}, [token, history]);
 
 	return (
 		<Page title="Bejelentkezés" className={classes.mainContainer}>

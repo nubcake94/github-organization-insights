@@ -48,6 +48,7 @@ const authSlice = createSlice({
 });
 
 export const selectLoginSubmitting = (state) => state.auth.submitting;
+export const selectToken = (state) => state.auth.token;
 
 const { revertState } = authSlice.actions;
 
