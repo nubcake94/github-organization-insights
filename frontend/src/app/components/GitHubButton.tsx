@@ -1,10 +1,12 @@
 import { Button, makeStyles } from '@material-ui/core';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import { useGitHubAuthentication } from 'app/hooks';
+import { selectLoginSubmitting } from 'app/store/slices/auth.slice';
 import palette from 'app/theme/palette';
 import queryString from 'query-string';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { Hypnosis } from 'react-cssfx-loading/lib';
+import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router';
 
 const GitHubButton = () => {
@@ -12,19 +14,16 @@ const GitHubButton = () => {
 	const { search } = useLocation();
 	const { handleAuthenticationRequest } = useGitHubAuthentication();
 
-	const [loading, setLoading] = useState<boolean>(false);
+	const { submitting } = useSelector(selectLoginSubmitting);
 
 	useEffect(() => {
 		const { code } = queryString.parse(search);
-		if (code) {
-			setLoading(true);
-		}
 	}, [search]);
 
 	return (
 		<Button
 			startIcon={
-				loading ? (
+				submitting ? (
 					<Hypnosis color={palette.text.primary} width="16px" height="16px" />
 				) : (
 					<GitHubIcon />
