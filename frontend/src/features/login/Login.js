@@ -24,6 +24,10 @@ const useStyles = makeStyles((theme) => ({
 	mainContainer: {
 		justifyContent: 'center',
 		alignItems: 'center',
+		[theme.breakpoints.down('sm')]: {
+			paddingLeft: '16px',
+			paddingRight: '16px',
+		},
 	},
 	paper: {
 		backgroundColor: theme.palette.background.paperLighter,

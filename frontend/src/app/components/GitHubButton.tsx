@@ -1,11 +1,38 @@
 import { Button, makeStyles } from '@material-ui/core';
 import GitHubIcon from '@material-ui/icons/GitHub';
+import { useGitHubAuthentication } from 'app/hooks';
 import palette from 'app/theme/palette';
+import queryString from 'query-string';
+import { useEffect, useState } from 'react';
+import { Hypnosis } from 'react-cssfx-loading/lib';
+import { useLocation } from 'react-router';
 
 const GitHubButton = () => {
 	const classes = useStyles();
+	const { search } = useLocation();
+	const { handleAuthenticationRequest } = useGitHubAuthentication();
+
+	const [loading, setLoading] = useState<boolean>(false);
+
+	useEffect(() => {
+		const { code } = queryString.parse(search);
+		if (code) {
+			setLoading(true);
+		}
+	}, [search]);
+
 	return (
-		<Button startIcon={<GitHubIcon />} className={classes.button}>
+		<Button
+			startIcon={
+				loading ? (
+					<Hypnosis color={palette.text.primary} width="16px" height="16px" />
+				) : (
+					<GitHubIcon />
+				)
+			}
+			className={classes.button}
+			onClick={handleAuthenticationRequest}
+		>
 			Bejelentkezés
 		</Button>
 	);

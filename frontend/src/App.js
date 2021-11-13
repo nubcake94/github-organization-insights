@@ -23,7 +23,19 @@ function App() {
 function RootApp() {
 	return (
 		<Provider store={store}>
-			<PersistGate loading={null} persistor={persistor} onBeforeLift={() => {}}>
+			<PersistGate
+				loading={null}
+				persistor={persistor}
+				onBeforeLift={() => {
+					const {
+						auth: { token },
+					} = store.getState();
+
+					if (token) {
+						// refresh axios token;
+					}
+				}}
+			>
 				<ThemeProvider theme={GHInsightsTheme}>
 					<App />
 				</ThemeProvider>
