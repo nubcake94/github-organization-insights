@@ -1,4 +1,4 @@
-import Joi from '@hapi/joi';
+import * as Joi from '@hapi/joi';
 import * as dotenv from 'dotenv';
 // eslint-disable-next-line import/order
 import * as fs from 'fs';

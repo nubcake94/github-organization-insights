@@ -15,7 +15,7 @@ import { authReducer } from './slices';
 const authPersistConfig = {
 	key: 'github-organization-insights',
 	storage,
-	whitelist: [''],
+	whitelist: ['token'],
 };
 
 const persistedAuthReducer = persistReducer(authPersistConfig, authReducer);

@@ -22,7 +22,7 @@ function redirect() {
 	window.location.href = '/';
 }
 
-function errorToast(content) {
+function errorToast(content: string) {
 	toast(content, {
 		...defaults,
 		type: 'error',

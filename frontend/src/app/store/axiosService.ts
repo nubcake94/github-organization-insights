@@ -11,6 +11,7 @@ class Axios {
 		});
 	}
 
+	// eslint-disable-next-line class-methods-use-this
 	refreshRequestHandler(token: string | null) {
 		// TODO refresh github given token here
 	}

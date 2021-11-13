@@ -1,4 +1,4 @@
-import Joi from '@hapi/joi';
+import * as Joi from '@hapi/joi';
 
 const envDefaults = {
 	NODE_ENV: Joi.string().default('development'),

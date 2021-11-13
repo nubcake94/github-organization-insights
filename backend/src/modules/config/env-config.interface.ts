@@ -1,4 +1,4 @@
-import Joi from '@hapi/joi';
+import * as Joi from '@hapi/joi';
 import DEFAULTS from './env-defaults';
 
 type EnvDefaults = typeof DEFAULTS;

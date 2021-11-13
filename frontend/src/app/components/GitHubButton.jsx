@@ -1,24 +1,28 @@
 import { Button, makeStyles } from '@material-ui/core';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import { useGitHubAuthentication } from 'app/hooks';
-import { selectLoginSubmitting } from 'app/store/slices/auth.slice';
+import { login, selectLoginSubmitting } from 'app/store/slices/auth.slice';
 import palette from 'app/theme/palette';
 import queryString from 'query-string';
 import { useEffect } from 'react';
 import { Hypnosis } from 'react-cssfx-loading/lib';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router';
 
 const GitHubButton = () => {
 	const classes = useStyles();
 	const { search } = useLocation();
+	const dispatch = useDispatch();
 	const { handleAuthenticationRequest } = useGitHubAuthentication();
 
 	const { submitting } = useSelector(selectLoginSubmitting);
 
 	useEffect(() => {
 		const { code } = queryString.parse(search);
-	}, [search]);
+		if (code) {
+			dispatch(login({ code }));
+		}
+	}, [search, dispatch]);
 
 	return (
 		<Button

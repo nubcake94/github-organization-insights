@@ -4,7 +4,12 @@ import { errorToast } from '../toast';
 
 export const login = createAsyncThunk('login', async ({ code }) => {
 	try {
-		const { data: token } = await axiosService.instance.post('/auth/login', { code });
+		const { REACT_APP_GITHUB_CLIENT_ID, REACT_APP_GITHUB_REDIRECT_URI } = process.env;
+		const { data: token } = await axiosService.instance.post('/auth/login', {
+			code,
+			REACT_APP_GITHUB_CLIENT_ID,
+			REACT_APP_GITHUB_REDIRECT_URI,
+		});
 		return token;
 	} catch (error) {
 		errorToast('A bejelentkezés nem sikerült :(');
@@ -42,7 +47,7 @@ const authSlice = createSlice({
 	},
 });
 
-export const selectLoginSubmitting = (state) => state.submitting;
+export const selectLoginSubmitting = (state) => state.auth.submitting;
 
 const { revertState } = authSlice.actions;
 
