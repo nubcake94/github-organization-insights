@@ -1,10 +1,10 @@
-import { ErrorLayout } from 'app/layouts';
+import { SimpleLayout } from 'app/layouts';
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 
 const emptyRoutes = {
 	route: '*',
-	component: ErrorLayout,
+	component: SimpleLayout,
 	routes: [
 		{
 			component: () => <Redirect to="/" />,

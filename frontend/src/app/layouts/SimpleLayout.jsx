@@ -2,7 +2,7 @@ import { LinearProgress } from '@material-ui/core';
 import React, { Suspense } from 'react';
 import { renderRoutes } from 'react-router-config';
 
-const ErrorLayout = ({ route }) => {
+const SimpleLayout = ({ route }) => {
 	return (
 		<>
 			<main>
@@ -12,4 +12,4 @@ const ErrorLayout = ({ route }) => {
 	);
 };
 
-export default ErrorLayout;
+export default SimpleLayout;

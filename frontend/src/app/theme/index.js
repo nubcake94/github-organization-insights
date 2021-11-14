@@ -2,9 +2,9 @@ import { createTheme } from '@material-ui/core';
 import palette from './palette';
 import typography from './typography';
 
-const theme = createTheme({
+const GHInsightsTheme = createTheme({
 	palette,
 	typography,
 });
 
-export default theme;
+export default GHInsightsTheme;
