@@ -2,9 +2,11 @@
 import { HttpModule } from '@nestjs/axios';
 import { Module } from '@nestjs/common';
 import { ServeStaticModule } from '@nestjs/serve-static';
+import { TerminusModule } from '@nestjs/terminus';
 import { join } from 'path';
 import { AuthModule } from './modules/auth/auth.module';
 import { ConfigModule } from './modules/config/config.module';
+import { HealthController } from './modules/health/healt.controller';
 
 @Module({
 	imports: [
@@ -17,6 +19,8 @@ import { ConfigModule } from './modules/config/config.module';
 		}),
 		AuthModule,
 		ConfigModule,
+		TerminusModule,
 	],
+	controllers: [HealthController],
 })
 export class AppModule {}

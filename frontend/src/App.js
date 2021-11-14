@@ -9,6 +9,7 @@ import { Router } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { PersistGate } from 'redux-persist/integration/react';
+import axiosInstance from './app/store/axiosService';
 
 export const history = createBrowserHistory({
 	basename: process.env.PUBLIC_URL,
@@ -35,7 +36,7 @@ function RootApp() {
 					} = store.getState();
 
 					if (token) {
-						// refresh axios token;
+						axiosInstance.refreshRequestHandler(token);
 					}
 				}}
 			>

@@ -1,7 +1,7 @@
-import { Logger } from '@nestjs/common';
+import { Logger, ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import helmet from 'helmet';
+import * as helmet from 'helmet';
 import { AppModule } from './app.module';
 
 const PORT = 5000;
@@ -12,6 +12,8 @@ async function bootstrap() {
 
 	// Set HTTP response headers
 	app.use(helmet());
+
+	app.useGlobalPipes(new ValidationPipe({ transform: true }));
 
 	app.setGlobalPrefix('api');
 
