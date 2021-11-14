@@ -5,7 +5,7 @@ import GHInsightsTheme from 'app/theme';
 import { createBrowserHistory } from 'history';
 import { Provider } from 'react-redux';
 import { renderRoutes } from 'react-router-config';
-import { Router } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { PersistGate } from 'redux-persist/integration/react';

@@ -1,6 +1,5 @@
 import { Box, makeStyles, Typography } from '@material-ui/core';
 import { GitHubButton, Page } from 'app/components';
-import axiosService from 'app/store/axiosService';
 import { selectToken } from 'app/store/slices/auth.slice';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
@@ -14,11 +13,10 @@ const Login = () => {
 
 	useEffect(() => {
 		if (token) {
-			history.push('/user/dashboard');
+			history.push('/app/sandbox');
 		}
 	}, [token, history]);
 
-	axiosService.instance.get('/health');
 	return (
 		<Page title="Bejelentkezés" className={classes.mainContainer}>
 			<Typography variant="h2" className={classes.title}>
