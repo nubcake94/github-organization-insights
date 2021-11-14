@@ -9,7 +9,7 @@ const Sandbox = () => {
 
 	const getAllOrganizations = () => {
 		axiosService.instance.get('/organization').then((response) => {
-			console.log(response);
+			console.log(response.data);
 		});
 	};
 

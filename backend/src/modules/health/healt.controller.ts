@@ -1,15 +1,15 @@
-import { Controller, Get, Req } from '@nestjs/common';
+import { Controller, Get } from '@nestjs/common';
 import { HealthCheck, HealthCheckService, HttpHealthIndicator } from '@nestjs/terminus';
-import { Request } from 'express';
-import { GithubToken } from 'src/types/githubToken.type';
+import { Public } from '../auth/decorators/public.decorator';
 
 @Controller('health')
 export class HealthController {
 	constructor(private health: HealthCheckService, private dns: HttpHealthIndicator) {}
 
 	@Get()
+	@Public()
 	@HealthCheck()
-	healthCheck(@Req() req: Request & { githubToken: GithubToken }) {
+	healthCheck() {
 		return this.health.check([() => this.dns.pingCheck('nestjs-docs', 'https://google.com')]);
 	}
 }
