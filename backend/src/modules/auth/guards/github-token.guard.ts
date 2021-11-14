@@ -15,6 +15,7 @@ export class GithubTokenGuard implements CanActivate {
 		// eslint-disable-next-line camelcase
 		const { access_token, scope, token_type } = request?.query;
 
+		// eslint-disable-next-line camelcase
 		if (access_token && scope && token_type) {
 			return true;
 		}

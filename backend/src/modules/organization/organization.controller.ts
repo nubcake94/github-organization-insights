@@ -11,6 +11,6 @@ export class OrganizationController {
 
 	@Get('/')
 	async getAll(@Req() req: Request & { githubToken: GithubToken }) {
-		this.organizationService.getAll(req.githubToken);
+		return this.organizationService.getAll(req.githubToken);
 	}
 }

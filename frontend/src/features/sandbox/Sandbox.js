@@ -7,10 +7,9 @@ import palette from 'app/theme/palette';
 const Sandbox = () => {
 	const classes = useStyles();
 
-	const getAllOrganizations = () => {
-		axiosService.instance.get('/organization').then((response) => {
-			console.log(response.data);
-		});
+	const getAllOrganizations = async () => {
+		const { data } = await axiosService.instance.get('/organization');
+		console.log(data);
 	};
 
 	return (

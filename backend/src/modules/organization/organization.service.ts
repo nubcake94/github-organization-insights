@@ -6,6 +6,6 @@ export class OrganizationService {
 	private logger = new Logger('OrganizationService');
 
 	async getAll(githubToken: GithubToken) {
-		return githubToken;
+		return { data: githubToken };
 	}
 }
