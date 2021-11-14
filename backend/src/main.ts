@@ -1,6 +1,7 @@
 import { Logger } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import helmet from 'helmet';
 import { AppModule } from './app.module';
 
 const PORT = 5000;
@@ -8,6 +9,9 @@ const PORT = 5000;
 async function bootstrap() {
 	const logger = process.env.NODE_ENV === 'production' ? console : new Logger('bootstrap');
 	const app = await NestFactory.create(AppModule, { logger });
+
+	// Set HTTP response headers
+	app.use(helmet());
 
 	app.setGlobalPrefix('api');
 
