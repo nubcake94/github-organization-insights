@@ -11,12 +11,16 @@ export class OrganizationService {
 
 	async getAll(githubToken: GithubToken) {
 		const query = gql`
-			query getOrgs {
+			query getOrgsRepos {
 				viewer {
-					organizations(first: 100) {
-						totalCount
+					organizations(first: 10) {
 						nodes {
-							name
+							login
+							repositories(first: 10) {
+								nodes {
+									name
+								}
+							}
 						}
 					}
 				}
@@ -25,7 +29,7 @@ export class OrganizationService {
 
 		const data = await this.githubService.request.withToken(query, githubToken);
 
-		console.log(data);
+		console.log(data?.viewer?.organizations);
 
 		return data;
 	}
