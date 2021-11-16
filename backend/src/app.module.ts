@@ -5,6 +5,7 @@ import { ServeStaticModule } from '@nestjs/serve-static';
 import { TerminusModule } from '@nestjs/terminus';
 import { join } from 'path';
 import { AuthModule } from './modules/auth/auth.module';
+import { GithubModule } from './modules/client/github.module';
 import { ConfigModule } from './modules/config/config.module';
 import { HealthController } from './modules/health/healt.controller';
 import { OrganizationModule } from './modules/organization/organization.module';
@@ -20,6 +21,7 @@ import { OrganizationModule } from './modules/organization/organization.module';
 		}),
 		AuthModule,
 		ConfigModule,
+		GithubModule,
 		TerminusModule,
 		OrganizationModule,
 	],
