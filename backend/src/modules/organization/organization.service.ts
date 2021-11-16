@@ -1,5 +1,5 @@
 import { Injectable, Logger } from '@nestjs/common';
-import { gql, GraphQLClient } from 'graphql-request';
+import { gql } from 'graphql-request';
 import { GithubToken } from 'src/types/githubToken.type';
 import { GithubService } from '../client/github.service';
 
@@ -10,26 +10,20 @@ export class OrganizationService {
 	constructor(private readonly githubService: GithubService) {}
 
 	async getAll(githubToken: GithubToken) {
-		const client = new GraphQLClient('https://api.github.com/graphql');
-
 		const query = gql`
-			query {
-				__type(name: "Repository") {
-					name
-					kind
-					description
-					fields {
-						name
+			query getOrgs {
+				viewer {
+					organizations(first: 100) {
+						totalCount
+						nodes {
+							name
+						}
 					}
 				}
 			}
 		`;
 
-		const data = await client.request(
-			query,
-			{},
-			{ Authorization: `Bearer ${githubToken.access_token}` },
-		);
+		const data = await this.githubService.request.withToken(query, githubToken);
 
 		console.log(data);
 

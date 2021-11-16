@@ -5,7 +5,7 @@ const useGitHubAuthentication = () => {
 
 	const handleAuthenticationRequest = () => {
 		const { REACT_APP_GITHUB_CLIENT_ID, REACT_APP_GITHUB_REDIRECT_URI } = process.env;
-		history.push(
+		window.location.replace(
 			`https://github.com/login/oauth/authorize?scope=user&client_id=${REACT_APP_GITHUB_CLIENT_ID}&redirect_uri=${REACT_APP_GITHUB_REDIRECT_URI}`
 		);
 	};
