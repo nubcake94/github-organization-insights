@@ -5,7 +5,6 @@ import * as helmet from 'helmet';
 import { AppModule } from './app.module';
 import { GithubTokenGuard } from './modules/auth/guards/github-token.guard';
 import { GithubTokenInterceptor } from './modules/auth/interceptors/github-token.interceptor';
-
 import { ConfigService } from './modules/config/config.service';
 
 async function bootstrap() {
