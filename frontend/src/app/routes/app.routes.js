@@ -1,10 +1,10 @@
-import { SimpleLayout } from 'app/layouts';
+import { AuthorizedLayout } from 'app/layouts';
 import { lazy } from 'react';
 import { Redirect } from 'react-router-dom';
 
 const appRoutes = {
 	path: '/app',
-	component: SimpleLayout,
+	component: AuthorizedLayout,
 	routes: [
 		{
 			path: '/app/sandbox',
