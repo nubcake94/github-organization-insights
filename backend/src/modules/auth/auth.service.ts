@@ -24,6 +24,7 @@ export class AuthService {
 			.pipe(
 				map((response) => {
 					if (response.status !== 200) {
+						this.logger.debug('Unsuccessful login');
 						throw new BadRequestException();
 					}
 					return response.data;

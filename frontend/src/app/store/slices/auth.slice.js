@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import queryString from 'query-string';
 import axiosService from '../axiosService';
 import { errorToast } from '../toast';
 
@@ -10,7 +11,14 @@ export const login = createAsyncThunk('login', async ({ code }) => {
 			REACT_APP_GITHUB_CLIENT_ID,
 			REACT_APP_GITHUB_REDIRECT_URI,
 		});
-		return token;
+
+		// eslint-disable-next-line camelcase
+		const { access_token, scope, token_type } = queryString.parse(`?${token}`);
+		// eslint-disable-next-line camelcase
+		if (!access_token || !scope || !token_type) {
+			throw Error('no success');
+		}
+		return { access_token, scope, token_type };
 	} catch (error) {
 		errorToast('A bejelentkezés nem sikerült :(');
 		throw error;
@@ -55,7 +63,7 @@ const { revertState } = authSlice.actions;
 export const logout = () => async (dispatch) => {
 	window.localStorage.removeItem('github-organization-insights');
 	dispatch(revertState());
-	// axiosService refresh request handler
+	axiosService.refreshRequestHandler(null);
 	window.location.replace('/');
 };
 
