@@ -15,7 +15,7 @@ export const fetchOrganizations = createAsyncThunk('fetchOrganizations', async (
 const organizationSlice = createSlice({
 	name: 'organization',
 	initialState: {
-		organizations: [],
+		organizations: null,
 		selectedIndex: null,
 		isLoading: false,
 	},
@@ -34,5 +34,9 @@ const organizationSlice = createSlice({
 		},
 	},
 });
+
+export const selectOrganizations = ({
+	organization: { organizations, selectedIndex, isLoading },
+}) => ({ organizations, selectedIndex, isLoading });
 
 export default organizationSlice.reducer;

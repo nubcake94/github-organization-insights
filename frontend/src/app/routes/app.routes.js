@@ -12,6 +12,11 @@ const appRoutes = {
 			component: lazy(() => import('features/sandbox/Sandbox')),
 		},
 		{
+			path: '/app/dashboard',
+			exact: true,
+			component: lazy(() => import('features/dashboard/Dashboard')),
+		},
+		{
 			component: () => <Redirect to="/errors/error-404" />,
 		},
 	],
