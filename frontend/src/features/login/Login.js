@@ -13,7 +13,7 @@ const Login = () => {
 
 	useEffect(() => {
 		if (token) {
-			history.push('/app/sandbox');
+			history.push('/app/dashboard');
 		}
 	}, [token, history]);
 

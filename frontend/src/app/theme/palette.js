@@ -13,8 +13,7 @@ export default {
 		subtitle1: '#8b949e',
 	},
 	background: {
-		field: '#010409',
-		default: '#0d1117',
+		default: '#010409',
 		paper: '#0D1117',
 		paperLighter: '#161b22',
 	},
