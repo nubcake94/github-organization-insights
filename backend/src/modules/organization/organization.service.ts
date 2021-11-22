@@ -16,6 +16,7 @@ export class OrganizationService {
 					organizations(first: 10) {
 						nodes {
 							login
+							avatarUrl
 							repositories(first: 10) {
 								nodes {
 									name
@@ -29,8 +30,6 @@ export class OrganizationService {
 
 		const data = await this.githubService.request.withToken(query, githubToken);
 
-		console.log(data?.viewer?.organizations);
-
-		return data;
+		return data?.viewer?.organizations?.nodes ?? [];
 	}
 }
