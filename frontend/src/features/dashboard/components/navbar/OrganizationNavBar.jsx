@@ -45,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
 	sideBar: {
 		display: 'flex',
 		flexDirection: 'column',
-		width: '350px',
+		minWidth: '350px',
 		minHeight: '100vh',
 		borderRight: `1px solid ${theme.palette.divider}`,
 		backgroundColor: theme.palette.background.paper,

@@ -1,5 +1,6 @@
 import { Box, makeStyles, Typography } from '@material-ui/core';
 import { selectOrganization } from 'app/store/slices/organization.slice';
+import clsx from 'clsx';
 import { useDispatch } from 'react-redux';
 
 type OrganizationNavBarItemProps = {
@@ -20,18 +21,24 @@ export default function OrganizationNavBarItem({
 	const dispatch = useDispatch();
 
 	const handleClick = () => {
-		dispatch(selectOrganization(index));
+		if (isSelected) {
+			dispatch(selectOrganization(null));
+		}
+		if (!isSelected) {
+			dispatch(selectOrganization(index));
+		}
 	};
 
 	const isSelected = selectedIndex === index;
 
 	return (
-		<Box className={classes.container}>
+		<Box className={classes.container} onClick={handleClick}>
 			<img className={classes.avatar} src={organization.avatarUrl} alt="orgAvatar" />
 			<Typography
 				variant="body1"
-				className={isSelected ? classes.selected : classes.hoverable}
-				onClick={isSelected ? () => {} : handleClick}
+				className={
+					isSelected ? clsx(classes.selected, classes.hoverable) : classes.hoverable
+				}
 			>
 				{organization.login}
 			</Typography>
