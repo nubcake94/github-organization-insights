@@ -34,6 +34,7 @@ export default function OrganizationNavBar() {
 					)}
 				</Box>
 				<Box className={classes.logoutContainer}>
+					<Divider className={classes.divider} />
 					<LogoutButton />
 				</Box>
 			</Box>
@@ -58,7 +59,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 	logoutContainer: {
 		padding: '32px',
-		alignSelf: 'flex-end',
+		alignItems: 'flex-end',
 	},
 	skeleton: {
 		height: '32px',
