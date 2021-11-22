@@ -13,18 +13,14 @@ export class ProfileService {
 		const query = gql`
 			query getProfile {
 				viewer {
-					user {
-						nodes {
-							login
-							avatarUrl
-						}
-					}
+					login
+					avatarUrl
 				}
 			}
 		`;
 
 		const data = await this.githubService.request.withToken(query, githubToken);
 
-		console.log(data);
+		return data?.viewer ?? {};
 	}
 }
