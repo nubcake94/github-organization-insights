@@ -39,4 +39,6 @@ export const selectOrganizations = ({
 	organization: { organizations, selectedIndex, isLoading },
 }) => ({ organizations, selectedIndex, isLoading });
 
+export const { selectOrganization } = organizationSlice.actions;
+
 export default organizationSlice.reducer;

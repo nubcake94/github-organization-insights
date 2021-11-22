@@ -17,7 +17,5 @@ export default {
 		paper: '#0D1117',
 		paperLighter: '#161b22',
 	},
-	divider: {
-		main: '#0000FF',
-	},
+	divider: '#30363d',
 };

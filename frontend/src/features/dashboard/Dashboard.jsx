@@ -1,10 +1,10 @@
 import { Page } from 'app/components';
-import NavBar from './components/NavBar';
+import OrganizationNavBar from './components/OrganizationNavBar';
 
 const Dashboard = () => {
 	return (
 		<Page title="Dashboard">
-			<NavBar />
+			<OrganizationNavBar />
 		</Page>
 	);
 };
