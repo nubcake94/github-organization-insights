@@ -9,6 +9,7 @@ import { GithubModule } from './modules/client/github.module';
 import { ConfigModule } from './modules/config/config.module';
 import { HealthController } from './modules/health/healt.controller';
 import { OrganizationModule } from './modules/organization/organization.module';
+import { ProfileModule } from './modules/profile/profile.module';
 
 @Module({
 	imports: [
@@ -24,6 +25,7 @@ import { OrganizationModule } from './modules/organization/organization.module';
 		GithubModule,
 		TerminusModule,
 		OrganizationModule,
+		ProfileModule,
 	],
 	controllers: [HealthController],
 })
