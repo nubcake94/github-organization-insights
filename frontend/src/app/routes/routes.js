@@ -3,6 +3,6 @@ import emptyRoutes from './empty.routes';
 import errorRoutes from './error.routes';
 import landingRoutes from './landing.routes';
 
-const routes = [appRoutes, landingRoutes, errorRoutes, emptyRoutes];
+const routes = [errorRoutes, appRoutes, landingRoutes, emptyRoutes];
 
 export default routes;
