@@ -9,6 +9,30 @@ export class OrganizationService {
 
 	constructor(private readonly githubService: GithubService) {}
 
+	async getCollaboratedRepositories(githubToken: GithubToken, organizationLogin: string) {
+		const query = gql`
+			query getCollaboratedRepos($login) {
+				viewer {
+					organization($login) {
+						nodes {
+							repositories(first: 100, affiliations: [COLLABORATOR]) {
+								nodes {
+									name
+								}
+							}
+						}
+					}
+				}
+			}
+		`;
+
+		const data = await this.githubService.request.withToken(query, githubToken, {
+			$login: organizationLogin,
+		});
+
+		return data;
+	}
+
 	async getAll(githubToken: GithubToken) {
 		const query = gql`
 			query getOrgsRepos {
@@ -17,11 +41,7 @@ export class OrganizationService {
 						nodes {
 							login
 							avatarUrl
-							repositories(first: 10) {
-								nodes {
-									name
-								}
-							}
+							viewerCanAdminister
 						}
 					}
 				}
