@@ -11,14 +11,13 @@ export class OrganizationService {
 
 	async getCollaboratedRepositories(githubToken: GithubToken, organizationLogin: string) {
 		const query = gql`
-			query getCollaboratedRepos($login) {
+			query getCollaboratedRepos($login: String!) {
 				viewer {
-					organization($login) {
-						nodes {
-							repositories(first: 100, affiliations: [COLLABORATOR]) {
-								nodes {
-									name
-								}
+					organization(login: $login) {
+						repositories(first: 100) {
+							nodes {
+								name
+								viewerPermission
 							}
 						}
 					}
@@ -27,10 +26,12 @@ export class OrganizationService {
 		`;
 
 		const data = await this.githubService.request.withToken(query, githubToken, {
-			$login: organizationLogin,
+			login: organizationLogin,
 		});
 
-		return data;
+		console.log(data?.viewer?.organization?.repositories);
+
+		return data?.organization?.repositories ?? [];
 	}
 
 	async getAll(githubToken: GithubToken) {

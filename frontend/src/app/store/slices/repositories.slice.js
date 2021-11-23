@@ -33,7 +33,7 @@ const repositorySlice = createSlice({
 		},
 		[fetchCollaboratedRepos.fulfilled]: (state, action) => {
 			state.isLoading = false;
-			state.organizations = action.payload;
+			state.repositories = action.payload;
 		},
 	},
 });
