@@ -17,11 +17,7 @@ export class OrganizationService {
 						nodes {
 							login
 							avatarUrl
-							repositories(first: 10) {
-								nodes {
-									name
-								}
-							}
+							viewerCanAdminister
 						}
 					}
 				}

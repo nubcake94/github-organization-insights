@@ -10,7 +10,7 @@ import {
 	REHYDRATE,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import { authReducer, organizationReducer, profileReducer } from './slices';
+import { authReducer, organizationReducer, profileReducer, repositoryReducer } from './slices';
 
 const authPersistConfig = {
 	key: 'github-organization-insights',
@@ -25,6 +25,7 @@ const store = configureStore({
 		auth: persistedAuthReducer,
 		organization: organizationReducer,
 		profile: profileReducer,
+		repository: repositoryReducer,
 	},
 	middleware: (getDefaultMiddleware) =>
 		getDefaultMiddleware({
