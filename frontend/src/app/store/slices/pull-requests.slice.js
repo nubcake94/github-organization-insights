@@ -4,10 +4,10 @@ import { errorToast } from '../toast';
 
 export const fetchAssignedPullRequests = createAsyncThunk(
 	'fetchAssignedPullRequests',
-	async ({ repositoryLogin }) => {
+	async ({ repositoryName }) => {
 		try {
 			const { data } = await axiosService.instance.get(
-				`/repository/${repositoryLogin}/assigned`
+				`/repository/${repositoryName}/assigned`
 			);
 			return data;
 		} catch (error) {

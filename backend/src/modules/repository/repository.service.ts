@@ -16,7 +16,7 @@ export class RepositoryService {
 					organization(login: $login) {
 						repositories(first: 100) {
 							nodes {
-								login
+								name
 								nameWithOwner
 								openGraphImageUrl
 								viewerPermission
@@ -34,11 +34,11 @@ export class RepositoryService {
 		return data?.viewer?.organization?.repositories?.nodes ?? [];
 	}
 
-	async getAssignedPullRequests(githubToken: GithubToken, repositoryLogin: string) {
+	async getAssignedPullRequests(githubToken: GithubToken, repositoryName: string) {
 		const query = gql`
-			query getAssignedPullRequests($login: String!) {
+			query getAssignedPullRequests($name: String!) {
 				viewer {
-					repository(login: $login) {
+					repository(name: $name) {
 						pullRequests(first: 50) {
 							createdAt
 							number
@@ -57,7 +57,7 @@ export class RepositoryService {
 		`;
 
 		const data = await this.githubService.request.withToken(query, githubToken, {
-			login: repositoryLogin,
+			name: repositoryName,
 		});
 
 		const pullRequests = data?.viewer?.reposiotry?.pullRequests;

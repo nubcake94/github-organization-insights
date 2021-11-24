@@ -9,7 +9,7 @@ const useRepositories = () => {
 	const { organizations, selectedIndex: selectedOrganizationIndex } = useOrganizations();
 
 	useEffect(() => {
-		if (selectedOrganizationIndex && !repositories && !isLoading) {
+		if (selectedOrganizationIndex !== null && !repositories && !isLoading) {
 			dispatch(
 				fetchCollaboratedRepos({
 					organizationLogin: organizations[selectedOrganizationIndex]?.login,
