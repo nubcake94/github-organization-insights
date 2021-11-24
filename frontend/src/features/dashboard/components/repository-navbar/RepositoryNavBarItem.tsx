@@ -1,5 +1,7 @@
 import { Box, makeStyles, Typography } from '@material-ui/core';
+import { selectRepository } from 'app/store/slices/repositories.slice';
 import clsx from 'clsx';
+import { useDispatch } from 'react-redux';
 
 type RepositoryNavBarItemProps = {
 	index: number;
@@ -18,11 +20,21 @@ export default function RepositoryNavBarItem({
 	repository,
 }: RepositoryNavBarItemProps) {
 	const classes = useStyles();
+	const dispatch = useDispatch();
+
+	const handleClick = () => {
+		if (isSelected) {
+			dispatch(selectRepository(null));
+		}
+		if (!isSelected) {
+			dispatch(selectRepository(index));
+		}
+	};
 
 	const isSelected = selectedIndex === index;
 
 	return (
-		<Box className={classes.container}>
+		<Box className={classes.container} onClick={handleClick}>
 			<img className={classes.avatar} src={repository.openGraphImageUrl} alt="orgAvatar" />
 			<Typography
 				variant="body1"
