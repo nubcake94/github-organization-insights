@@ -42,6 +42,7 @@ export default function OrganizationNavBar() {
 
 const useStyles = makeStyles((theme) => ({
 	sideBar: {
+		position: 'relative',
 		display: 'flex',
 		flexDirection: 'column',
 		minWidth: '350px',

@@ -18,4 +18,17 @@ export class RepositoryController {
 			organizationLogin,
 		);
 	}
+
+	@Get('/:organizationLogin/:repositoryName/assigned')
+	async getAssignedPullRequests(
+		@Req() req: Request & { githubToken: GithubToken },
+		@Param('organizationLogin') organizationLogin: string,
+		@Param('repositoryName') repositoryName: string,
+	) {
+		return this.repositoryService.getAssignedPullRequests(
+			req.githubToken,
+			organizationLogin,
+			repositoryName,
+		);
+	}
 }

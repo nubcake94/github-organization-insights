@@ -14,6 +14,7 @@ const useStyles = makeStyles((theme: typeof GHInsightsTheme) =>
 		fullHeight: {
 			...sharedStyles,
 			minHeight: '100vh',
+			maxHeight: '100vh',
 			backgroundColor: theme.palette.background.default,
 		},
 	})
