@@ -16,7 +16,7 @@ export class RepositoryService {
 					organization(login: $login) {
 						repositories(first: 100) {
 							nodes {
-								name
+								login
 								nameWithOwner
 								openGraphImageUrl
 								viewerPermission
@@ -32,5 +32,37 @@ export class RepositoryService {
 		});
 
 		return data?.viewer?.organization?.repositories?.nodes ?? [];
+	}
+
+	async getAssignedPullRequests(githubToken: GithubToken, repositoryLogin: string) {
+		const query = gql`
+			query getAssignedPullRequests($login: String!) {
+				viewer {
+					repository(login: $login) {
+						pullRequests(first: 50) {
+							createdAt
+							number
+							title
+							body
+							editor
+							assignees
+							comments
+							reviewDecision
+							reviewRequest
+							reviews
+						}
+					}
+				}
+			}
+		`;
+
+		const data = await this.githubService.request.withToken(query, githubToken, {
+			login: repositoryLogin,
+		});
+
+		const pullRequests = data?.viewer?.reposiotry?.pullRequests;
+		console.log(pullRequests);
+
+		return pullRequests ?? [];
 	}
 }
