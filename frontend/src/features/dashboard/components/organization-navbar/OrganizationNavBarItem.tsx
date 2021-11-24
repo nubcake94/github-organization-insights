@@ -1,5 +1,6 @@
 import { Box, makeStyles, Typography } from '@material-ui/core';
 import { selectOrganization } from 'app/store/slices/organization.slice';
+import { selectRepository } from 'app/store/slices/repositories.slice';
 import clsx from 'clsx';
 import { useDispatch } from 'react-redux';
 
@@ -23,9 +24,11 @@ export default function OrganizationNavBarItem({
 	const handleClick = () => {
 		if (isSelected) {
 			dispatch(selectOrganization(null));
+			dispatch(selectRepository(null));
 		}
 		if (!isSelected) {
 			dispatch(selectOrganization(index));
+			dispatch(selectRepository(null));
 		}
 	};
 

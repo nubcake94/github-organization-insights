@@ -1,19 +1,28 @@
 import { makeStyles } from '@material-ui/core';
 import { Page } from 'app/components';
-import { useOrganizations } from 'app/hooks';
+import { useOrganizations, useRepositories } from 'app/hooks';
 import NoOrganization from './components/empty/NoOrganization';
+import NoRepository from './components/empty/NoRepository';
 import OrganizationNavBar from './components/organization-navbar/OrganizationNavBar';
 import RepositoryNavBar from './components/repository-navbar/RepositoryNavBar';
 
 const Dashboard = () => {
 	const classes = useStyles();
 
-	const { selectedIndex } = useOrganizations();
+	const { selectedIndex: selectedOrganizationIndex } = useOrganizations();
+	const { selectedIndex: selectedRepositoryIndex } = useRepositories();
 
 	return (
 		<Page title="Dashboard" className={classes.page}>
 			<OrganizationNavBar />
-			{selectedIndex === null ? <NoOrganization /> : <RepositoryNavBar />}
+			{selectedOrganizationIndex === null ? (
+				<NoOrganization />
+			) : (
+				<>
+					<RepositoryNavBar />
+					{selectedRepositoryIndex === null && <NoRepository />}
+				</>
+			)}
 		</Page>
 	);
 };
