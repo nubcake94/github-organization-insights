@@ -17,6 +17,8 @@ export class RepositoryService {
 						repositories(first: 100) {
 							nodes {
 								name
+								nameWithOwner
+								openGraphImageUrl
 								viewerPermission
 							}
 						}
@@ -29,8 +31,6 @@ export class RepositoryService {
 			login: organizationLogin,
 		});
 
-		console.log(data?.viewer?.organization?.repositories);
-
-		return data?.organization?.repositories ?? [];
+		return data?.viewer?.organization?.repositories?.nodes ?? [];
 	}
 }

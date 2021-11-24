@@ -1,11 +1,34 @@
 import { Box, makeStyles } from '@material-ui/core';
+import { Skeleton } from '@material-ui/lab';
 import { useRepositories } from 'app/hooks';
+import RepositoryNavBarItem from './RepositoryNavBarItem';
 
 export default function RepositoryNavBar() {
 	const classes = useStyles();
 	const { repositories, selectedIndex, isLoading } = useRepositories();
 
-	return <Box className={classes.sideBar} />;
+	return (
+		<Box className={classes.sideBar}>
+			<Box className={classes.container}>
+				{isLoading ? (
+					<>
+						<Skeleton className={classes.skeleton} />
+						<Skeleton className={classes.skeleton} />
+						<Skeleton className={classes.skeleton} />
+					</>
+				) : (
+					repositories?.map((repository, index) => (
+						<RepositoryNavBarItem
+							index={index}
+							key={`${repository.name}`}
+							selectedIndex={selectedIndex}
+							repository={repository}
+						/>
+					))
+				)}
+			</Box>
+		</Box>
+	);
 }
 
 const useStyles = makeStyles((theme) => ({

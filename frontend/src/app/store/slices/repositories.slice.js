@@ -6,7 +6,9 @@ export const fetchCollaboratedRepos = createAsyncThunk(
 	'fetchCollaboratedRepos',
 	async ({ organizationLogin }) => {
 		try {
-			const { data } = await axiosService.instance.get(`/organization/${organizationLogin}`);
+			const { data } = await axiosService.instance.get(
+				`/repository/${organizationLogin}/collaborated`
+			);
 			return data;
 		} catch (error) {
 			errorToast('A repository-k lekérdezése nem sikerült!');
