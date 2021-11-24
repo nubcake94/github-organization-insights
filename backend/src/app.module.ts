@@ -10,6 +10,7 @@ import { ConfigModule } from './modules/config/config.module';
 import { HealthController } from './modules/health/healt.controller';
 import { OrganizationModule } from './modules/organization/organization.module';
 import { ProfileModule } from './modules/profile/profile.module';
+import { RepositoryModule } from './modules/repository/repository.module';
 
 @Module({
 	imports: [
@@ -25,6 +26,7 @@ import { ProfileModule } from './modules/profile/profile.module';
 		GithubModule,
 		TerminusModule,
 		OrganizationModule,
+		RepositoryModule,
 		ProfileModule,
 	],
 	controllers: [HealthController],
