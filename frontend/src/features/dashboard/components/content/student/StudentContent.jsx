@@ -1,5 +1,6 @@
-import { Box, makeStyles, Typography } from '@material-ui/core';
+import { Box, makeStyles } from '@material-ui/core';
 import { useAssignedPullRequests } from 'app/hooks';
+import StudentPullRequestCard from './StudentPullRequestCard';
 
 export default function StudentContent() {
 	const classes = useStyles();
@@ -7,7 +8,9 @@ export default function StudentContent() {
 
 	return (
 		<Box className={classes.container}>
-			<Typography variant="h1">PLACEHOLDER</Typography>
+			{pullRequests?.map((pullRequest) => (
+				<StudentPullRequestCard pullRequest={pullRequest} />
+			))}
 		</Box>
 	);
 }
@@ -18,7 +21,6 @@ const useStyles = makeStyles((theme) => ({
 		flexDirection: 'column',
 		flex: 1,
 		padding: '16px',
-		backgroundColor: 'red',
 		overflowY: 'auto',
 	},
 }));

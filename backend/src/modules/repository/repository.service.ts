@@ -90,6 +90,15 @@ export class RepositoryService {
 									number
 									title
 									reviewDecision
+									reviewRequests(first: 5) {
+										nodes {
+											requestedReviewer {
+												... on User {
+													login
+												}
+											}
+										}
+									}
 									reviews(first: 5) {
 										nodes {
 											body
