@@ -2,12 +2,16 @@ import { Injectable, Logger } from '@nestjs/common';
 import { gql } from 'graphql-request';
 import { GithubToken } from 'src/types/githubToken.type';
 import { GithubService } from '../client/github.service';
+import { ProfileService } from '../profile/profile.service';
 
 @Injectable()
 export class RepositoryService {
 	private logger = new Logger('RepositoryService');
 
-	constructor(private readonly githubService: GithubService) {}
+	constructor(
+		private readonly githubService: GithubService,
+		private readonly profileService: ProfileService,
+	) {}
 
 	async getCollaboratedRepositories(githubToken: GithubToken, organizationLogin: string) {
 		const query = gql`
@@ -39,6 +43,8 @@ export class RepositoryService {
 		organizationName: string,
 		repositoryName: string,
 	) {
+		const viewer = await this.profileService.get(githubToken);
+
 		const query = gql`
 			query getAssignedPullRequests($login: String!, $name: String!) {
 				viewer {
@@ -48,7 +54,7 @@ export class RepositoryService {
 								nodes {
 									assignees(first: 5) {
 										nodes {
-											name
+											login
 										}
 									}
 									body
@@ -113,8 +119,14 @@ export class RepositoryService {
 		});
 
 		const pullRequests = data?.viewer?.organization?.repository?.pullRequests;
-		console.log(pullRequests);
+		const assignees = pullRequests?.nodes?.map((pr) =>
+			pr?.assignees?.nodes?.map((assignee) => assignee?.login),
+		);
 
-		return pullRequests ?? [];
+		const assignedPullRequests = pullRequests?.nodes?.filter((_, index) =>
+			assignees[index].includes(viewer.login),
+		);
+
+		return assignedPullRequests ?? [];
 	}
 }
