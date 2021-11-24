@@ -1,16 +1,15 @@
-import { selectOrganizations } from 'app/store/slices/organization.slice';
 import { fetchCollaboratedRepos, selectRepositories } from 'app/store/slices/repositories.slice';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import useOrganizations from './useOrganizations';
 
 const useRepositories = () => {
 	const dispatch = useDispatch();
 	const { repositories, selectedIndex, isLoading } = useSelector(selectRepositories);
-	const { organizations, selectedIndex: selectedOrganizationIndex } =
-		useSelector(selectOrganizations);
+	const { organizations, selectedIndex: selectedOrganizationIndex } = useOrganizations();
 
 	useEffect(() => {
-		if (selectedOrganizationIndex && !repositories && !isLoading) {
+		if (!repositories && !isLoading) {
 			dispatch(
 				fetchCollaboratedRepos({
 					organizationLogin: organizations[selectedOrganizationIndex]?.login,
