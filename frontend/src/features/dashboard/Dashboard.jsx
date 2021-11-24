@@ -1,6 +1,7 @@
 import { makeStyles } from '@material-ui/core';
 import { Page } from 'app/components';
 import { useOrganizations, useRepositories } from 'app/hooks';
+import DashboardContent from './components/content/DashboardContent';
 import NoOrganization from './components/empty/NoOrganization';
 import NoRepository from './components/empty/NoRepository';
 import OrganizationNavBar from './components/organization-navbar/OrganizationNavBar';
@@ -20,7 +21,7 @@ const Dashboard = () => {
 			) : (
 				<>
 					<RepositoryNavBar />
-					{selectedRepositoryIndex === null && <NoRepository />}
+					{selectedRepositoryIndex === null ? <NoRepository /> : <DashboardContent />}
 				</>
 			)}
 		</Page>

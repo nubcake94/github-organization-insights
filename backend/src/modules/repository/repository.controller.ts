@@ -11,11 +11,24 @@ export class RepositoryController {
 	@Get('/:login/collaborated')
 	async getCollaboratedRepositories(
 		@Req() req: Request & { githubToken: GithubToken },
-		@Param('login') organizationName: string,
+		@Param('login') organizationLogin: string,
 	) {
 		return this.repositoryService.getCollaboratedRepositories(
 			req.githubToken,
-			organizationName,
+			organizationLogin,
+		);
+	}
+
+	@Get('/:organizationLogin/:repositoryName/assigned')
+	async getAssignedPullRequests(
+		@Req() req: Request & { githubToken: GithubToken },
+		@Param('organizationLogin') organizationLogin: string,
+		@Param('repositoryName') repositoryName: string,
+	) {
+		return this.repositoryService.getAssignedPullRequests(
+			req.githubToken,
+			organizationLogin,
+			repositoryName,
 		);
 	}
 }

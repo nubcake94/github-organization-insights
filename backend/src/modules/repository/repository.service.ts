@@ -34,22 +34,73 @@ export class RepositoryService {
 		return data?.viewer?.organization?.repositories?.nodes ?? [];
 	}
 
-	async getAssignedPullRequests(githubToken: GithubToken, repositoryName: string) {
+	async getAssignedPullRequests(
+		githubToken: GithubToken,
+		organizationName: string,
+		repositoryName: string,
+	) {
 		const query = gql`
-			query getAssignedPullRequests($name: String!) {
+			query getAssignedPullRequests($login: String!, $name: String!) {
 				viewer {
-					repository(name: $name) {
-						pullRequests(first: 50) {
-							createdAt
-							number
-							title
-							body
-							editor
-							assignees
-							comments
-							reviewDecision
-							reviewRequest
-							reviews
+					organization(login: $login) {
+						repository(name: $name) {
+							pullRequests(first: 50) {
+								nodes {
+									assignees(first: 5) {
+										nodes {
+											name
+										}
+									}
+									body
+									changedFiles
+									comments(first: 20) {
+										nodes {
+											author {
+												avatarUrl
+												login
+											}
+											createdAt
+											body
+										}
+									}
+									commits(first: 30) {
+										nodes {
+											commit {
+												message
+												pushedDate
+											}
+										}
+									}
+									createdAt
+									editor {
+										login
+									}
+									labels(first: 5) {
+										nodes {
+											color
+											name
+										}
+									}
+									number
+									title
+									reviewDecision
+									reviews(first: 5) {
+										nodes {
+											body
+											comments(first: 10) {
+												nodes {
+													author {
+														avatarUrl
+														login
+													}
+													createdAt
+													body
+												}
+											}
+										}
+									}
+								}
+							}
 						}
 					}
 				}
@@ -57,10 +108,11 @@ export class RepositoryService {
 		`;
 
 		const data = await this.githubService.request.withToken(query, githubToken, {
+			login: organizationName,
 			name: repositoryName,
 		});
 
-		const pullRequests = data?.viewer?.reposiotry?.pullRequests;
+		const pullRequests = data?.viewer?.organization?.repository?.pullRequests;
 		console.log(pullRequests);
 
 		return pullRequests ?? [];
