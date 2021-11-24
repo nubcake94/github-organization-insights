@@ -1,5 +1,6 @@
 import { Box, Button, Divider, makeStyles, Typography } from '@material-ui/core';
 import { Page } from 'app/components';
+import palette from 'app/theme/palette';
 
 const Error404 = () => {
 	const classes = useStyles();
@@ -44,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
 
 	text: {
 		flex: 1,
-		color: theme.palette.text.subtitle1,
+		color: palette.text.subtitle1,
 	},
 }));
 
