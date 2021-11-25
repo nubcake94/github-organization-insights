@@ -1,4 +1,4 @@
-import { Avatar, Box, Card, Divider, makeStyles, Typography } from '@material-ui/core';
+import { Avatar, Box, Card, Chip, Divider, makeStyles, Typography } from '@material-ui/core';
 import {
 	Timeline,
 	TimelineConnector,
@@ -30,7 +30,7 @@ export default function StudentPullRequestCard({ pullRequest }: { pullRequest: P
 			</Box>
 			<Divider />
 			<Box display="flex" flexDirection="row" py={2}>
-				<Box flex={4} flexDirection="column">
+				<Box flex={7} flexDirection="column">
 					<Typography variant="body1">{pullRequest?.body}</Typography>
 					<Timeline align="right">
 						{pullRequest?.commits?.nodes?.map((commit) => (
@@ -73,7 +73,7 @@ export default function StudentPullRequestCard({ pullRequest }: { pullRequest: P
 						</Card>
 					))}
 				</Box>
-				<Box flex={1}>
+				<Box flex={2}>
 					<Typography variant="h5" className={classes.greyColor}>
 						Assignees
 					</Typography>
@@ -91,11 +91,24 @@ export default function StudentPullRequestCard({ pullRequest }: { pullRequest: P
 					))}
 					<Divider className={classes.divider} />
 					<Typography variant="h5" className={classes.greyColor}>
+						Labels
+					</Typography>
+					{pullRequest?.labels?.nodes?.map((label) => (
+						<Chip
+							key={`label-${label?.name}`}
+							className={classes.chip}
+							style={{ background: `#${label?.color ?? 'FFFFFF'}` }}
+							label={label?.name}
+						/>
+					))}
+					<Divider className={classes.divider} />
+					<Typography variant="h5" className={classes.greyColor}>
 						Changed files
 					</Typography>
 					<Typography variant="body1">{pullRequest?.changedFiles}</Typography>
 					<Divider className={classes.divider} />
 					<ReviewDecisionIcon reviewDecision={pullRequest?.reviewDecision} />
+					<Typography variant="h4">{pullRequest?.givenPoint}</Typography>
 				</Box>
 			</Box>
 		</Card>
@@ -112,6 +125,10 @@ const useStyles = makeStyles((theme) => ({
 	},
 	greyColor: {
 		color: palette.text.subtitle1,
+	},
+	chip: {
+		margin: '4px',
+		padding: '0px',
 	},
 	divider: {
 		margin: '8px 0px 8px 0px',

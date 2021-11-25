@@ -9,15 +9,17 @@ export default function StudentContent() {
 	return (
 		<Box className={classes.container}>
 			{pullRequests?.map((pullRequest) => (
-				<StudentPullRequestCard pullRequest={pullRequest} />
+				<StudentPullRequestCard
+					key={`#pr-${pullRequest?.number}`}
+					pullRequest={pullRequest}
+				/>
 			))}
 		</Box>
 	);
 }
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
 	container: {
-		display: 'flex',
 		flexDirection: 'column',
 		flex: 1,
 		padding: '16px',

@@ -58,6 +58,7 @@ export type PullRequest = {
 	};
 	number: number;
 	title: string;
+	givenPoint?: string;
 	reviewDecision: ReviewDecision;
 	reviewRequests: {
 		nodes: RequestedReviewer[];

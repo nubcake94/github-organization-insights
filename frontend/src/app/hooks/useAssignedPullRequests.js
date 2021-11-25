@@ -12,9 +12,6 @@ const useAssignedPullRequests = () => {
 	const { repositories, selectedIndex: selectedRepositoryIndex } = useRepositories();
 	const { organizations, selectedIndex: selectedOrganizationIndex } = useOrganizations();
 
-	console.log(repositories[selectedRepositoryIndex]?.name);
-	console.log(repositories[selectedRepositoryIndex]);
-
 	useEffect(() => {
 		if (selectedRepositoryIndex !== null && !pullRequests && !isLoading) {
 			dispatch(
