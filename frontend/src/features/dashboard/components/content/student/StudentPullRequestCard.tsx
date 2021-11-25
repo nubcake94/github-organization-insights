@@ -96,6 +96,7 @@ export default function StudentPullRequestCard({ pullRequest }: { pullRequest: P
 					<Typography variant="body1">{pullRequest?.changedFiles}</Typography>
 					<Divider className={classes.divider} />
 					<ReviewDecisionIcon reviewDecision={pullRequest?.reviewDecision} />
+					<Typography variant="h4">{pullRequest?.givenPoint}</Typography>
 				</Box>
 			</Box>
 		</Card>

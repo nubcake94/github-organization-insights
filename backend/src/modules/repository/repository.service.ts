@@ -136,6 +136,15 @@ export class RepositoryService {
 			assignees[index].includes(viewer.login),
 		);
 
+		assignedPullRequests?.forEach((pr, index) => {
+			pr?.comments?.nodes?.forEach((comment) => {
+				const hasGivenPoints = comment?.body?.includes('Pontszám: ');
+				if (hasGivenPoints) {
+					assignedPullRequests[index].givenPoint = comment?.body;
+				}
+			});
+		});
+
 		return assignedPullRequests ?? [];
 	}
 }
