@@ -20,7 +20,6 @@ export default function StudentContent() {
 
 const useStyles = makeStyles(() => ({
 	container: {
-		display: 'flex',
 		flexDirection: 'column',
 		flex: 1,
 		padding: '16px',
