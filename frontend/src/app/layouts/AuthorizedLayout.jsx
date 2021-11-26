@@ -12,7 +12,7 @@ const AuthorizedLayout = ({ route }) => {
 		return <LinearProgress />;
 	}
 	if (!submitting && !token) {
-		return <Redirect to="/errors/error-404" />;
+		return <Redirect to="/login" />;
 	}
 
 	return (
